@@ -1,10 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { WorkerComponent } from './worker/worker.component';
+import { CommonModule } from '@angular/common';
+import { AdminComponent } from './admin.component';
+import { NavComponent } from './nav/nav.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './admin/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,13 +13,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { AdminModule } from './admin/admin.module';
+import { HomeComponent } from './home/home.component';
 @NgModule({
-  declarations: [AppComponent, UserComponent, WorkerComponent],
+  declarations: [AdminComponent, NavComponent, HomeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AdminModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -30,8 +28,8 @@ import { AdminModule } from './admin/admin.module';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
+    CommonModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  exports: [AdminComponent, NavComponent],
 })
-export class AppModule {}
+export class AdminModule {}
