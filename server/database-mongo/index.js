@@ -1,12 +1,12 @@
 var mongoose = require("mongoose");
 var bcrypt = require("bcryptjs");
-// mongoose.connect(
-//   "mongodb+srv://user:Y0QIFKndntB1HIz3@cluster0.efioa.mongodb.net/DIGITAL-DEALERS?retryWrites=true&w=majority",
-//   { useNewUrlParser: true, useUnifiedTopology: true }
-// );
-//
-//user
-//Y0QIFKndntB1HIz3
+mongoose.connect(
+  "mongodb+srv://user:Y0QIFKndntB1HIz3@cluster0.efioa.mongodb.net/DIGITAL-DEALERS?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+// user
+// Y0QIFKndntB1HIz3
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
