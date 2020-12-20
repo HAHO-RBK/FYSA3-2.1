@@ -41,7 +41,9 @@ var selectAllProf = function (callback) {
       }
     });
 };
-
+var findAllWorker = (callback) => {
+  Worker.find().exec(callback);
+};
 var selectOneWorker = function (worker, callback) {
   Worker.findOne({ username: worker.username }, function (err, result) {
     if (err) {
@@ -56,7 +58,9 @@ var selectOneWorker = function (worker, callback) {
     }
   });
 };
-
+var findAllUser = function (callback) {
+  User.find({}).exec(callback);
+};
 var selectOneUser = function (user, callback) {
   console.log("Yooo");
   User.findOne({ username: user.username }, function (err, result) {
@@ -223,3 +227,5 @@ module.exports.selectWorkerDoingOrders = selectWorkerDoingOrders;
 module.exports.selectWorkerDoneOrders = selectWorkerDoneOrders;
 module.exports.selectUserOrders = selectUserOrders;
 module.exports.insertOffer = insertOffer;
+module.exports.findAllUser = findAllUser;
+module.exports.findAllWorker = findAllWorker;

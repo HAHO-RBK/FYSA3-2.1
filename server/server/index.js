@@ -67,7 +67,12 @@ app.post("/login", (req, res) => {
     }
   });
 });
-
+app.get("/user/all", (req, res) => {
+  db.findAllUser((err, data) => {
+    if (err) throw err;
+    res.send(data);
+  });
+});
 //the user update
 app.put("/user/update", function (req, res) {
   db.updateUser(req.body.data, (data) => {

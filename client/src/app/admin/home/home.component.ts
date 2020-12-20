@@ -42,7 +42,7 @@ export class HomeComponent {
       for (let i = 0; i < data.length; i++) {
         data[i]['title'] = 'profission';
         data[i]['cols'] = 1;
-        data[i]['rows'] = 2;
+        data[i]['rows'] = 1;
       }
       console.log(data);
       this.cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
