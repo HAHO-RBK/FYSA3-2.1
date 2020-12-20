@@ -13,7 +13,8 @@ var userSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  ban: { type: Boolean, default: false }
 });
 var User = mongoose.model("User", userSchema);
 module.exports.User = User;

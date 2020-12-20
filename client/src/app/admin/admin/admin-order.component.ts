@@ -18,9 +18,10 @@ export class AdminOrderComponent implements AfterViewInit {
     'last_name',
     'phone',
     'location',
+    'profission',
     'actions',
   ];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<PeriodicElement>();
   constructor(private http: HttpClient) {}
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -41,6 +42,7 @@ export class AdminOrderComponent implements AfterViewInit {
           last_name: data[i]['last_name'],
           phone: data[i]['phone'],
           location: data[i]['location'],
+          prof: data[i]['prof']['name'],
         });
       }
       var sour: PeriodicElement[] = res;
@@ -59,15 +61,5 @@ export interface PeriodicElement {
   last_name: String;
   phone: Number;
   location: String;
+  prof: String;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 'this is the id',
-    username: 'oussama',
-    first_name: 'medfai',
-    last_name: 'oussama',
-    phone: 555555,
-    location: 'tunis',
-  },
-];

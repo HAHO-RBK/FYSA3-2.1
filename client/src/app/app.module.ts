@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { WorkerComponent } from './worker/worker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -28,6 +29,8 @@ import { AppRoutingModule } from './admin/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminOrderComponent } from './admin/admin/admin-order.component';
 import { UserListComponent } from './admin/user-list/user-list.component';
+import { ProfaddComponent } from './admin/profadd/profadd.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,7 @@ import { UserListComponent } from './admin/user-list/user-list.component';
     HomeComponent,
     AdminOrderComponent,
     UserListComponent,
+    ProfaddComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,7 @@ import { UserListComponent } from './admin/user-list/user-list.component';
     MatMenuModule,
     MatPaginatorModule,
     MatSortModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

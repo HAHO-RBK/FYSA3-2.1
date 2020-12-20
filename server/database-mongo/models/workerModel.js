@@ -10,14 +10,14 @@ var workerSchema = mongoose.Schema({
   email: String,
   phone: Number,
   location: String,
-  prof: String,
   rate: Number,
   password: {
     type: String,
     required: true
   },
   infos: String,
-  prof: { type: mongoose.Schema.Types.ObjectId, ref: "Prof" }
+  prof: { type: mongoose.Schema.Types.ObjectId, ref: "Prof" },
+  ban: { type: Boolean, default: false }
 });
 var Worker = mongoose.model("Worker", workerSchema);
 module.exports.Worker = Worker;

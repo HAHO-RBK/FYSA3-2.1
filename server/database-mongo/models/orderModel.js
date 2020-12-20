@@ -5,9 +5,9 @@ var orderSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
-  worker_id: {
+  offer_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Worker"
+    ref: "Offer"
   },
   info: String,
   date: String,

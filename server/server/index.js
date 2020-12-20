@@ -27,6 +27,17 @@ app.get("/api/profs", function (req, res) {
     }
   });
 });
+app.post("/api/profs", function (req, res) {
+  console.log(req.body);
+  // db.selectAllProf(function (err, data) {
+  //   console.log(data, err);
+  //   if (err) {
+  //     res.sendStatus(500);
+  //   } else {
+  //     res.json(data);
+  //   }
+  // });
+});
 // the user and the worker login with the username and the password
 app.post("/login", (req, res) => {
   let givenPassword = req.body.password;
@@ -96,9 +107,7 @@ app.put("/worker/update", function (req, res) {
 //Worker rigester
 app.post("/workerRegister", (req, res) => {
   console.log(req.body);
-  var data = req.body.data;
-  data.rate = 0;
-  db.addWorker(data, (err, worker) => {
+  db.addWorker(req.body, (err, worker) => {
     if (err) {
       res.send("Worker not created");
     } else {
