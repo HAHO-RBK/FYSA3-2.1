@@ -3,8 +3,10 @@ var bodyParser = require("body-parser");
 var db = require("../database-mongo");
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
+var cors = require("cors");
 
 var app = express();
+app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: true

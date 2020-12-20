@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { WorkerComponent } from './worker/worker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './admin/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

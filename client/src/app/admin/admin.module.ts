@@ -14,6 +14,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [AdminComponent, NavComponent, HomeComponent],
   imports: [
@@ -29,7 +34,12 @@ import { HomeComponent } from './home/home.component';
     MatCardModule,
     MatMenuModule,
     CommonModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
-  exports: [AdminComponent, NavComponent],
+  exports: [AdminComponent, NavComponent, HomeComponent],
 })
 export class AdminModule {}
