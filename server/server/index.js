@@ -81,6 +81,12 @@ app.put("/user/update", function (req, res) {
   });
 });
 //the worker update
+app.get("/worker/all", (req, res) => {
+  db.findAllWorker((err, data) => {
+    if (err) throw err;
+    res.send(data);
+  });
+});
 app.put("/worker/update", function (req, res) {
   db.updateWorker(req.body.data, (data) => {
     console.log(data);

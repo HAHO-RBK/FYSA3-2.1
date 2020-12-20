@@ -27,6 +27,7 @@ import { HomeComponent } from './admin/home/home.component';
 import { AppRoutingModule } from './admin/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminOrderComponent } from './admin/admin/admin-order.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,13 +37,13 @@ import { AdminOrderComponent } from './admin/admin/admin-order.component';
     NavComponent,
     HomeComponent,
     AdminOrderComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     LayoutModule,
-
     AppRoutingModule,
     HttpClientModule,
     MatToolbarModule,

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
  * @title Table with pagination
  */
 @Component({
-  selector: 'admin-order',
-  styleUrls: ['admin-order.component.css'],
-  templateUrl: 'admin-order.component.html',
+  selector: 'user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css'],
 })
-export class AdminOrderComponent implements AfterViewInit {
+export class UserListComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'username',
     'first_name',
@@ -20,7 +20,7 @@ export class AdminOrderComponent implements AfterViewInit {
     'location',
     'actions',
   ];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<PeriodicElement>();
   constructor(private http: HttpClient) {}
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -29,7 +29,7 @@ export class AdminOrderComponent implements AfterViewInit {
     this.getuser();
   }
   getuser() {
-    this.http.get('http://localhost:3000/worker/all').subscribe((data: []) => {
+    this.http.get('http://localhost:3000/user/all').subscribe((data: []) => {
       console.log(data, 'ddddddddddddd');
 
       var res = [];
@@ -60,14 +60,3 @@ export interface PeriodicElement {
   phone: Number;
   location: String;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 'this is the id',
-    username: 'oussama',
-    first_name: 'medfai',
-    last_name: 'oussama',
-    phone: 555555,
-    location: 'tunis',
-  },
-];
