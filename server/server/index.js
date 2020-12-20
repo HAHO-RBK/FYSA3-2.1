@@ -3,8 +3,10 @@ var bodyParser = require("body-parser");
 var db = require("../database-mongo");
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
+var cors = require("cors");
 
 var app = express();
+app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -65,7 +67,12 @@ app.post("/login", (req, res) => {
     }
   });
 });
-
+app.get("/user/all", (req, res) => {
+  db.findAllUser((err, data) => {
+    if (err) throw err;
+    res.send(data);
+  });
+});
 //the user update
 app.put("/user/update", function (req, res) {
   db.updateUser(req.body.data, (data) => {
