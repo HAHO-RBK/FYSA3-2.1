@@ -41,8 +41,11 @@ var selectAllProf = function (callback) {
       }
     });
 };
+var addProf=(data,callback)=>{
+  
+}
 var findAllWorker = (callback) => {
-  Worker.find().exec(callback);
+  Worker.find().populate("prof").exec(callback);
 };
 var selectOneWorker = function (worker, callback) {
   Worker.findOne({ username: worker.username }, function (err, result) {
