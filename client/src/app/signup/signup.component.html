@@ -1,0 +1,63 @@
+<div class="col s12">
+  <div class="input-field col s6">
+    <input [(ngModel)]="first_name" id="name" type="text" />
+    <label for="first_name">First Name</label>
+  </div>
+
+  <div class="input-field col s6">
+    <input [(ngModel)]="last_name" id="Nname" type="text" />
+    <label for="last_name">Last Name</label>
+  </div>
+  <div class="input-field col s6">
+    <input [(ngModel)]="username" id="name" type="text" />
+    <label for="username">Username</label>
+  </div>
+
+  <div class="input-field col s12">
+    <input [(ngModel)]="password" id="password" type="password" />
+    <label for="password">Password</label>
+  </div>
+
+  <div class="input-field col s12">
+    <input [(ngModel)]="email" id="email" type="mail" type="email" />
+    <label for="email">E-mail</label>
+  </div>
+
+  <label for="location">Location</label>
+  <select name="location" id="location" form="locationform">
+    <option value="ariana">Ariana</option>
+    <option value="béja">Béja</option>
+    <option value="benarous">Ben Arous</option>
+    <option value="bizerte">Bizerte</option>
+    <option value="gabés">Gabés</option>
+    <option value="gafsa">Gafsa</option>
+    <option value="jendouba">Jendouba</option>
+    <option value="kairouan">Kairouan</option>
+    <option value="kasserine">Kasserine</option>
+    <option value="kebili">Kebili</option>
+    <option value="Kef">Kef</option>
+    <option value="Mahdia">Mahdia</option>
+    <option value="manouba">Manouba</option>
+    <option value="medenine">Medenine</option>
+    <option value="monastir">Monastir</option>
+    <option value="Nabeul">Nabeul</option>
+    <option value="Sfax">Sfax</option>
+    <option value="Sidi Bouzid">Sidi Bouzid</option>
+    <option value="Siliana">Siliana</option>
+    <option value="Sousse">Sousse</option>
+    <option value="Tataouine">Tataouine</option>
+    <option value="Tozeur">Tozeur</option>
+    <option value="Tunis">Tunis</option>
+    <option value="Zaghouan">Zaghouan</option>
+  </select>
+
+  <div class="input-field col s12">
+    <button
+      (click)="addUser()"
+      class="waves-effect waves-light btn btn-large btn-submit"
+      type="submit"
+    >
+      Signup
+    </button>
+  </div>
+</div>
