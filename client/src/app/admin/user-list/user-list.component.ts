@@ -58,5 +58,6 @@ export interface PeriodicElement {
   first_name: String;
   last_name: String;
   phone: Number;
+
   location: String;
 }

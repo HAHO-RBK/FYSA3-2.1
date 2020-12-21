@@ -44,10 +44,7 @@ export class ProfaddComponent implements OnInit {
         });
     } else {
       this.http
-        .put(
-          `http://localhost:3000/api/prof/update/${form.value._id}`,
-          form.value
-        )
+        .put(`http://localhost:3000/api/profs/${form.value._id}`, form.value)
         .subscribe((res) => {
           this.resetForm(form);
           this.refreshEmployeeList();
