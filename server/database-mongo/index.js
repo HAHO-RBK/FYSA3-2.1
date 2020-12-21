@@ -72,6 +72,9 @@ var selectOneWorker = function (worker, callback) {
 var findAllUser = function (callback) {
   User.find({}).exec(callback);
 };
+var banUser = (id, callback) => {
+  User.findByIdAndUpdate(id, { $set: { ban: !ban } }, callback);
+};
 var selectOneUser = function (user, callback) {
   console.log("Yooo");
   User.findOne({ username: user.username }, function (err, result) {
@@ -131,8 +134,9 @@ const addUser = function (user, callback) {
 };
 
 var selectAllOrders = function (callback) {
-  Order.find({})
-    .populate("worker_id")
+  Order.find()
+    .populate("offer")
+    .populate("user")
     .exec((err, orders) => {
       if (err) {
         callback(err, null);
@@ -243,3 +247,4 @@ module.exports.findAllWorker = findAllWorker;
 module.exports.addProf = addProf;
 module.exports.deleteProf = deleteProf;
 module.exports.updateProf = updateProf;
+module.exports.banUser = banUser;

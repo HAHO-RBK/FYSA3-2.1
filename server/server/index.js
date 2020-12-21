@@ -113,6 +113,13 @@ app.put("/user/update", function (req, res) {
     res.send(data);
   });
 });
+app.get("/user/ban/:id", function (req, res) {
+  console.log(req.params.id);
+  db.banUser(req.params.id, (data) => {
+    console.log(data);
+    res.send(data);
+  });
+});
 //the worker update
 app.get("/worker/all", (req, res) => {
   db.findAllWorker((err, data) => {
@@ -141,7 +148,7 @@ app.post("/workerRegister", (req, res) => {
 //user adds the order
 app.post("/addorder", (req, res) => {
   console.log(req.body);
-  var data = req.body.data;
+  var data = req.body;
   db.addOrder(data, (err, order) => {
     if (err) {
       res.send("Order not created");
@@ -153,8 +160,8 @@ app.post("/addorder", (req, res) => {
 });
 // user register
 app.post("/userRegister", (req, res) => {
-  console.log(req.body.data);
-  db.addUser(req.body.data, (err, user) => {
+  console.log(req.body);
+  db.addUser(req.body, (err, user) => {
     if (err) {
       res.send("User not created");
     } else {
