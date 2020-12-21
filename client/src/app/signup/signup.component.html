@@ -1,0 +1,31 @@
+<div class="col s12">
+  <div class="input-field col s6">
+    <input [(ngModel)]="first_name" id="name" type="text" />
+    <label for="first_name">First Name</label>
+  </div>
+
+  <div class="input-field col s6">
+    <input [(ngModel)]="last_name" id="Nname" type="text" />
+    <label for="last_name">Last Name</label>
+  </div>
+
+  <div class="input-field col s12">
+    <input [(ngModel)]="password" id="pasword" type="password" />
+    <label for="password">Password</label>
+  </div>
+
+  <div class="input-field col s12">
+    <input [(ngModel)]="email" id="email" type="mail" type="email" />
+    <label for="email">E-mail</label>
+  </div>
+
+  <div class="input-field col s12">
+    <button
+      (click)="addUser()"
+      class="waves-effect waves-light btn btn-large btn-submit"
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<form class="col s12 whie">
+  <div>
+    <div class="input-field col s12">
+      <span class="material-icons prefix"> account_circle </span>
+      <input [(ngModel)]="email" id="mail" placeholder="email" type="text" />
+    </div>
+
+    <div class="input-field col s12">
+      <span class="material-icons prefix"> no_encryption </span>
+      <input
+        [(ngModel)]="password"
+        id="pasword"
+        placeholder="password"
+        type="password"
+      />
+    </div>
+
+    <div class="input-field col s12">
+      <span class="material-icons"> login </span>
+      <button (click)="onLogin()" class="btn-large btn-submit" type="submit">
+        Submit
+      </button>
+    </div>
+  </div>
+</form>

@@ -3,6 +3,9 @@ var bodyParser = require("body-parser");
 var db = require("../database-mongo");
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
+var passport = require("passport");
+var bcrypt = require("bcrypt");
+// const router = express.Router();
 
 var app = express();
 app.use(
@@ -25,8 +28,8 @@ app.get("/api/profs", function (req, res) {
     }
   });
 });
-// the user and the worker login with the username and the password
-app.post("/login", (req, res) => {
+// the user and the worker signin with the username and the password
+app.post("/signin", (req, res) => {
   let givenPassword = req.body.password;
   console.log(req.body);
   db.selectOneWorker(req.body, async (err, worker) => {
