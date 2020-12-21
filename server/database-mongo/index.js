@@ -41,9 +41,8 @@ var selectAllProf = function (callback) {
       }
     });
 };
-var addProf=(data,callback)=>{
-  
-}
+var addProf = (data, callback) => {};
+var deleteProf = (id, callback) => {};
 var findAllWorker = (callback) => {
   Worker.find().populate("prof").exec(callback);
 };
