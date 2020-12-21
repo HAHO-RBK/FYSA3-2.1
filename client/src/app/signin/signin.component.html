@@ -1,15 +1,20 @@
-<form class="col s12 whie">
+<form #signin="ngForm" class="col s12 whie" (ngSubmit)="onLogin(signin)">
   <div>
     <div class="input-field col s12">
       <span class="material-icons prefix"> account_circle </span>
-      <input [(ngModel)]="email" id="mail" placeholder="email" type="text" />
+      <input
+        [(ngModel)]="username"
+        name="username"
+        placeholder="username"
+        type="text"
+      />
     </div>
 
     <div class="input-field col s12">
       <span class="material-icons prefix"> no_encryption </span>
       <input
         [(ngModel)]="password"
-        id="pasword"
+        name="password"
         placeholder="password"
         type="password"
       />
@@ -17,9 +22,7 @@
 
     <div class="input-field col s12">
       <span class="material-icons"> login </span>
-      <button (click)="onLogin()" class="btn-large btn-submit" type="submit">
-        Submit
-      </button>
+      <button class="btn-large btn-submit" type="submit">Signin</button>
     </div>
   </div>
 </form>

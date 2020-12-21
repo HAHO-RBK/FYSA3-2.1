@@ -5,7 +5,8 @@ var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 var passport = require("passport");
 var bcrypt = require("bcrypt");
-// const router = express.Router();
+const router = express.Router();
+var { Worker } = require("./../database-mongo/index");
 
 var app = express();
 app.use(
@@ -84,16 +85,31 @@ app.put("/worker/update", function (req, res) {
   });
 });
 //Worker rigester
-app.post("/workerRegister", (req, res) => {
-  console.log(req.body);
-  var data = req.body.data;
-  data.rate = 0;
-  db.addWorker(data, (err, worker) => {
-    if (err) {
-      res.send("Worker not created");
-    } else {
-      console.log("Worker created successfully");
-      res.json(worker);
+// app.post("/workerRegister", (req, res) => {
+//   console.log(req.body);
+//   var data = req.body.data;
+//   data.rate = 0;
+//   db.addWorker(data, (err, worker) => {
+//     if (err) {
+//       res.send("Worker not created");
+//     } else {
+//       console.log("Worker created successfully");
+//       res.json(worker);
+//     }
+//   });
+// });
+router.route("/workerRegister").post(function (req, res) {
+  Worker.findOne({ username: req.body.username }, async (err, doc) => {
+    if (err) throw err;
+    if (doc) res.send("Worker Already registered");
+    if (!doc) {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const newWorker = new Worker({
+        username: req.body.username,
+        email: req.body.email
+      });
+      await newWorker.save();
+      res.send(req.body);
     }
   });
 });
