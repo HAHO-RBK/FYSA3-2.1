@@ -29,14 +29,36 @@ app.get("/api/profs", function (req, res) {
 });
 app.post("/api/profs", function (req, res) {
   console.log(req.body);
-  // db.selectAllProf(function (err, data) {
-  //   console.log(data, err);
-  //   if (err) {
-  //     res.sendStatus(500);
-  //   } else {
-  //     res.json(data);
-  //   }
-  // });
+  var postdata = { name: req.body.name };
+  db.addProf(postdata, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.json(data);
+    }
+  });
+});
+app.delete("/api/profs/:id", function (req, res) {
+  console.log(req.params.id);
+  db.deleteProf(req.params.id, (err, data) => {
+    console.log(err, data);
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.json(data);
+    }
+  });
+});
+app.put("/api/profs/:id", function (req, res) {
+  console.log(req.params.id);
+  db.updateProf(req.params.id, req.body, (err, data) => {
+    console.log(err, data);
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.json(data);
+    }
+  });
 });
 // the user and the worker login with the username and the password
 app.post("/login", (req, res) => {

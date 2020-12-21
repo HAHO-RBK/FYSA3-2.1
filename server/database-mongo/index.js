@@ -41,8 +41,17 @@ var selectAllProf = function (callback) {
       }
     });
 };
-var addProf = (data, callback) => {};
-var deleteProf = (id, callback) => {};
+var addProf = (data, callback) => {
+  var newprof = new Prof(data);
+  newprof.save(callback);
+};
+var deleteProf = (id, callback) => {
+  Prof.findByIdAndDelete(id).exec(callback);
+};
+var updateProf = (id, data, callback) => {
+  var updatedata = new Prof(data);
+  Prof.findOneAndUpdate({ _id: id }, updatedata, { upsert: true }, callback);
+};
 var findAllWorker = (callback) => {
   Worker.find().populate("prof").exec(callback);
 };
@@ -231,3 +240,6 @@ module.exports.selectUserOrders = selectUserOrders;
 module.exports.insertOffer = insertOffer;
 module.exports.findAllUser = findAllUser;
 module.exports.findAllWorker = findAllWorker;
+module.exports.addProf = addProf;
+module.exports.deleteProf = deleteProf;
+module.exports.updateProf = updateProf;
