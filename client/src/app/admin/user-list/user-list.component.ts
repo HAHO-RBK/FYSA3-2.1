@@ -48,7 +48,9 @@ export class UserListComponent implements AfterViewInit {
     });
   }
   getid(x) {
-    window.alert(x);
+    this.http.get(`http://localhost:3000/user/ban/${x}`).subscribe((res) => {
+      console.log(res);
+    });
   }
 }
 
