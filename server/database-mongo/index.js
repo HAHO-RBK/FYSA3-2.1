@@ -72,8 +72,13 @@ var selectOneWorker = function (worker, callback) {
 var findAllUser = function (callback) {
   User.find({}).exec(callback);
 };
-var banUser = (id, callback) => {
-  User.findByIdAndUpdate(id, { $set: { ban: !ban } }, callback);
+var banUser = async (id, callback) => {
+  const user = await User.findOne({ _id: id });
+  User.findByIdAndUpdate(id, { $set: { ban: !user.ban } }, callback);
+};
+var banWorker = async (id, callback) => {
+  const user = await Worker.findOne({ _id: id });
+  Worker.findByIdAndUpdate(id, { $set: { ban: !user.ban } }, callback);
 };
 var selectOneUser = function (user, callback) {
   console.log("Yooo");
@@ -248,3 +253,4 @@ module.exports.addProf = addProf;
 module.exports.deleteProf = deleteProf;
 module.exports.updateProf = updateProf;
 module.exports.banUser = banUser;
+module.exports.banWorker = banWorker;

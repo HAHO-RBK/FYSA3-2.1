@@ -91,9 +91,13 @@ app.post("/login", (req, res) => {
           return res.send("Invalid password");
         } else {
           let token = jwt.sign(
-            { username: worker.username, password: worker.password },
+            {
+              username: worker.username,
+              password: worker.password
+            },
             "mysecrettoken"
           );
+          worker.roles = "Admin";
           res.status(200).header("auth-token", token).send({ token, worker });
         }
       }
@@ -116,6 +120,13 @@ app.put("/user/update", function (req, res) {
 app.get("/user/ban/:id", function (req, res) {
   console.log(req.params.id);
   db.banUser(req.params.id, (data) => {
+    console.log(data);
+    res.send(data);
+  });
+});
+app.get("/worker/ban/:id", function (req, res) {
+  console.log(req.params.id);
+  db.banWorker(req.params.id, (data) => {
     console.log(data);
     res.send(data);
   });
