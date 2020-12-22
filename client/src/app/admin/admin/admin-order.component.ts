@@ -19,6 +19,7 @@ export class AdminOrderComponent implements AfterViewInit {
     'phone',
     'location',
     'profission',
+    'status',
     'actions',
   ];
   dataSource = new MatTableDataSource<PeriodicElement>();
@@ -43,6 +44,7 @@ export class AdminOrderComponent implements AfterViewInit {
           phone: data[i]['phone'],
           location: data[i]['location'],
           prof: data[i]['prof']['name'],
+          status: data[i]['ban'],
         });
       }
       var sour: PeriodicElement[] = res;
@@ -50,7 +52,11 @@ export class AdminOrderComponent implements AfterViewInit {
     });
   }
   getid(x) {
-    window.alert(x);
+    console.log(x);
+    this.http.get(`http://localhost:3000/worker/ban/${x}`).subscribe((res) => {
+      console.log(res);
+      this.getuser();
+    });
   }
 }
 
@@ -61,5 +67,6 @@ export interface PeriodicElement {
   last_name: String;
   phone: Number;
   location: String;
+  status: String;
   prof: String;
 }

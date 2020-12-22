@@ -1,0 +1,66 @@
+input,
+select {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#title {
+  border-bottom: 1px solid;
+  padding: 10px;
+  box-shadow: 0px 0px 18px #888888;
+}
+
+#desc {
+  width: 25%;
+  height: 220px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10%;
+}
+
+label {
+  margin-left: 38%;
+}
+
+h1 {
+  margin-left: 40%;
+  font-size: 35px;
+}
+
+#err {
+  color: red;
+  margin-left: 38%;
+}
+
+#sub {
+  color: green;
+  margin-left: 38%;
+}
+
+.date {
+  width: 24%;
+  margin-left: 37%;
+  border: 1px solid rgba(0, 0, 0, 0.541);
+  border-radius: 10px;
+  padding-left: 30px;
+}
+
+button {
+  margin-top: 2%;
+}
+
+#add {
+  margin-left: 53%;
+}
+
+#submit {
+  margin-left: 5px;
+}

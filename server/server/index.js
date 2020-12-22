@@ -4,6 +4,7 @@ var db = require("../database-mongo");
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 var cors = require("cors");
+var workerOffer = require("./routers/workerOffer");
 
 var app = express();
 app.use(cors());
@@ -91,9 +92,13 @@ app.post("/login", (req, res) => {
           return res.send("Invalid password");
         } else {
           let token = jwt.sign(
-            { username: worker.username, password: worker.password },
+            {
+              username: worker.username,
+              password: worker.password
+            },
             "mysecrettoken"
           );
+
           res.status(200).header("auth-token", token).send({ token, worker });
         }
       }
@@ -116,6 +121,13 @@ app.put("/user/update", function (req, res) {
 app.get("/user/ban/:id", function (req, res) {
   console.log(req.params.id);
   db.banUser(req.params.id, (data) => {
+    console.log(data);
+    res.send(data);
+  });
+});
+app.get("/worker/ban/:id", function (req, res) {
+  console.log(req.params.id);
+  db.banWorker(req.params.id, (data) => {
     console.log(data);
     res.send(data);
   });
@@ -284,6 +296,7 @@ app.put("/order/update", function (req, res) {
     }
   });
 });
+app.use("/", workerOffer);
 // var port = process.env.PORT || "3000";
 app.listen(3000, function () {
   console.log("listening on port 3000!");

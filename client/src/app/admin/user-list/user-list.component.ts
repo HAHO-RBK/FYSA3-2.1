@@ -18,6 +18,7 @@ export class UserListComponent implements AfterViewInit {
     'last_name',
     'phone',
     'location',
+    'status',
     'actions',
   ];
   dataSource = new MatTableDataSource<PeriodicElement>();
@@ -41,6 +42,7 @@ export class UserListComponent implements AfterViewInit {
           last_name: data[i]['last_name'],
           phone: data[i]['phone'],
           location: data[i]['location'],
+          status: data[i]['ban'],
         });
       }
       var sour: PeriodicElement[] = res;
@@ -50,6 +52,7 @@ export class UserListComponent implements AfterViewInit {
   getid(x) {
     this.http.get(`http://localhost:3000/user/ban/${x}`).subscribe((res) => {
       console.log(res);
+      this.getuser();
     });
   }
 }
@@ -60,6 +63,6 @@ export interface PeriodicElement {
   first_name: String;
   last_name: String;
   phone: Number;
-
+  status: String;
   location: String;
 }

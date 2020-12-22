@@ -1,12 +1,26 @@
-<div [ngSwitch]="switch_expression">
-  <div *ngSwitchCase="'user'">
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+  </div>
+  <div>
+    <button (click)="changeview('User')">user</button>
+  </div>
+  <div><button (click)="changeview('worker')">worker</button></div>
+  <div>
+    <button (click)="changeview('Admin')">admin</button>
+  </div>
+</nav>
+
+<div [ngSwitch]="role">
+  <div *ngSwitchCase="'User'">
     <app-user></app-user>
   </div>
   <div *ngSwitchCase="'worker'">
     <app-worker></app-worker>
   </div>
-  <div *ngSwitchCase="'admin'">
+  <div *ngSwitchCase="'Admin'">
     <admin></admin>
   </div>
-  <div *ngSwitchCase="'home'"></div>
 </div>
+<router-outlet></router-outlet>

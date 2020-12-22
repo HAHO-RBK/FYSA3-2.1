@@ -30,6 +30,18 @@ var insertOffer = function (data) {
   return Offer.create(data);
 };
 
+var getAllOffers = function () {
+  return Offer.find({});
+};
+
+var getOffersByWorkerId = function (id) {
+  return Offer.find({ worker_id: id });
+};
+
+var deleteOfferById = function (id) {
+  return Offer.findByIdAndDelete(id);
+};
+
 var selectAllProf = function (callback) {
   Prof.find({})
     .populate("workers")
@@ -72,8 +84,13 @@ var selectOneWorker = function (worker, callback) {
 var findAllUser = function (callback) {
   User.find({}).exec(callback);
 };
-var banUser = (id, callback) => {
-  User.findByIdAndUpdate(id, { $set: { ban: !ban } }, callback);
+var banUser = async (id, callback) => {
+  const user = await User.findOne({ _id: id });
+  User.findByIdAndUpdate(id, { $set: { ban: !user.ban } }, callback);
+};
+var banWorker = async (id, callback) => {
+  const user = await Worker.findOne({ _id: id });
+  Worker.findByIdAndUpdate(id, { $set: { ban: !user.ban } }, callback);
 };
 var selectOneUser = function (user, callback) {
   console.log("Yooo");
@@ -248,3 +265,7 @@ module.exports.addProf = addProf;
 module.exports.deleteProf = deleteProf;
 module.exports.updateProf = updateProf;
 module.exports.banUser = banUser;
+module.exports.banWorker = banWorker;
+module.exports.getOffersByWorkerId = getOffersByWorkerId;
+module.exports.getAllOffers = getAllOffers;
+module.exports.deleteOfferById = deleteOfferById;
