@@ -30,6 +30,18 @@ var insertOffer = function (data) {
   return Offer.create(data);
 };
 
+var getAllOffers = function () {
+  return Offer.find({});
+};
+
+var getOffersByWorkerId = function (id) {
+  return Offer.find({ worker_id: id });
+};
+
+var deleteOfferById = function (id) {
+  return Offer.findByIdAndDelete(id);
+};
+
 var selectAllProf = function (callback) {
   Prof.find({})
     .populate("workers")
@@ -254,3 +266,6 @@ module.exports.deleteProf = deleteProf;
 module.exports.updateProf = updateProf;
 module.exports.banUser = banUser;
 module.exports.banWorker = banWorker;
+module.exports.getOffersByWorkerId = getOffersByWorkerId;
+module.exports.getAllOffers = getAllOffers;
+module.exports.deleteOfferById = deleteOfferById;

@@ -1,0 +1,67 @@
+<div class="container">
+  <div id="title"><h1>Post your offer here</h1></div>
+  <br /><br />
+
+  <div class="workerForm">
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+      <input ngModel placeholder="Title" name="title" />
+      <input
+        ngModel
+        placeholder="Description"
+        name="desc"
+        id="desc"
+      /><br /><br />
+      <label for="days">Choose a day:</label>
+      <input type="date" ngModel name="days" />
+      <br /><br />
+      <label for="from">From</label>
+      <select ngModel name="from">
+        <optgroup label="Morning">
+          <option value="8 AM">8 AM</option>
+          <option value="9 AM">9 AM</option>
+          <option value="10 AM">10 AM</option>
+          <option value="11 AM">11 AM</option>
+          <option value="12 PM">12 PM</option>
+        </optgroup>
+        <optgroup label="afternoon">
+          <option value="13 PM">13 PM</option>
+          <option value="14 PM">14 PM</option>
+          <option value="15 PM">15 PM</option>
+          <option value="16 PM">16 PM</option>
+          <option value="17 PM">17 PM</option>
+          <option value="18 PM">18 PM</option>
+        </optgroup></select
+      ><br /><br />
+      <label for="to">To</label>
+      <select ngModel name="to">
+        <optgroup label="Morning">
+          <option value="8 AM">8 AM</option>
+          <option value="9 AM">9 AM</option>
+          <option value="10 AM">10 AM</option>
+          <option value="11 AM">11 AM</option>
+          <option value="12 PM">12 PM</option>
+        </optgroup>
+        <optgroup label="afternoon">
+          <option value="13 PM">13 PM</option>
+          <option value="14 PM">14 PM</option>
+          <option value="15 PM">15 PM</option>
+          <option value="16 PM">16 PM</option>
+          <option value="17 PM">17 PM</option>
+          <option value="18 PM">18 PM</option>
+        </optgroup>
+      </select>
+      <div *ngIf="dates.length" class="date">
+        <li *ngFor="let date of dates">
+          day: {{ date.day }} from: {{ date.from }} to: {{ date.to }}
+        </li>
+      </div>
+      <p *ngIf="error" id="err">Please fill the form correctly</p>
+      <button id="add" mat-raised-button type="button" (click)="addDate(f)">
+        Add date
+      </button>
+      <button id="submit" color="primary" mat-raised-button type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

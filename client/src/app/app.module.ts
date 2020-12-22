@@ -32,6 +32,8 @@ import { UserListComponent } from './admin/user-list/user-list.component';
 import { ProfaddComponent } from './admin/profadd/profadd.component';
 import { appRoutingModule } from './app.routing';
 import { LoginComponent } from './login/login.component';
+import { WorkerRoutingModule } from './worker/worker.routing.module';
+import { UserRoutingModule } from './user/user.routing.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     LayoutModule,
     AppRoutingModule,
+    appRoutingModule,
+    WorkerRoutingModule,
     HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
@@ -66,7 +70,7 @@ import { LoginComponent } from './login/login.component';
     MatSortModule,
     FormsModule,
     ReactiveFormsModule,
-    appRoutingModule,
+    UserRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

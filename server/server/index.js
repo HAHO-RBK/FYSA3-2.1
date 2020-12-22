@@ -4,6 +4,7 @@ var db = require("../database-mongo");
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 var cors = require("cors");
+var workerOffer = require("./routers/workerOffer");
 
 var app = express();
 app.use(cors());
@@ -97,7 +98,7 @@ app.post("/login", (req, res) => {
             },
             "mysecrettoken"
           );
-          worker.roles = "Admin";
+
           res.status(200).header("auth-token", token).send({ token, worker });
         }
       }
@@ -295,6 +296,7 @@ app.put("/order/update", function (req, res) {
     }
   });
 });
+app.use("/", workerOffer);
 // var port = process.env.PORT || "3000";
 app.listen(3000, function () {
   console.log("listening on port 3000!");

@@ -9,18 +9,25 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   currentUser: User;
-
+  role: string;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(
-      (x) => (this.currentUser = x)
-    );
+    this.authenticationService.currentUser.subscribe((x) => {
+      this.currentUser = x;
+      if (x && x.role === 'User') {
+        this.role = 'User';
+      }
+      console.log(x);
+    });
   }
 
   get isAdmin() {
     return this.currentUser && this.currentUser.role === Role.Admin;
+  }
+  changeview(x) {
+    this.role = x;
   }
 
   logout() {
